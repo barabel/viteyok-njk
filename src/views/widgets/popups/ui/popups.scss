@@ -1,0 +1,54 @@
+@use '~/src/assets/styles/lib/index.scss' as *;
+
+$parent: "popups";
+
+@include block($parent) {
+  $popup-transition-appearing: 0.3s;
+
+  z-index: calc(var(--header-index, 9999) + 1);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  height: 100dvh;
+  width: 100%;
+  background: #00000080;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  pointer-events: none;
+  transition:  opacity $popup-transition-appearing, visibility $popup-transition-appearing;
+
+  @include element($parent, 'wrapper') {
+    z-index: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    height: auto;
+    background-color: transparent;
+  }
+
+  @include modifier($parent, "appearing") {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    @include element($parent, 'wrapper') {
+      transform: translateX(0);
+    }
+  }
+
+  @include modifier($parent, 'backdrop') {
+    @include min-media('t') {
+      align-items: flex-end;
+      background: transparent;
+      backdrop-filter: blur(8px);
+    }
+  }
+}

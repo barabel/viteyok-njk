@@ -1,0 +1,38 @@
+{# Страница со списком страниц, видно только на дев сервере, в билд не уходит #}
+
+{% extends "src/views/layout/base.njk" %}
+
+{% block header %}{% endblock %}
+
+{% block footer %}{% endblock %}
+
+{% block styles %}
+  <style>
+    .__index-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 10px;
+    }
+
+    .__index-link {
+      width: fit-content;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+  <div class="__index-list">
+    Список страниц сайта
+
+    {% for html in 'a'|listHtml %}
+       <a
+        class="__index-link"
+        href="/{{ html.file }}"
+        target="_self"
+      >
+        - {{ html.file }}
+      </a>
+    {% endfor %}
+  </div>
+{% endblock %}

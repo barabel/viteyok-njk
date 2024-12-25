@@ -1,0 +1,32 @@
+@use '~/src/assets/styles/lib/index.scss' as *;
+
+.check-popup {
+  margin: 0 auto rem(20);
+  padding: rem(10);
+  background-color: #B2C5B7;
+}
+
+.check-svg {
+  margin: 0 auto;
+
+  &__svg {
+    width: rem(24);
+    min-width: rem(24);
+    height: rem(24);
+  }
+}
+
+.check-animations {
+  max-width: rem(360);
+  margin: 0 auto;
+
+  &__animation {
+    padding: rem(50);
+    background-color: #B2C5B7;
+
+
+    &:not(:last-child) {
+      margin-bottom: rem(100);
+    }
+  }
+}

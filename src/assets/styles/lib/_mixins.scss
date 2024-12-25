@@ -1,0 +1,88 @@
+@mixin block($parent) {
+  @if import-once($parent) {
+    .#{$parent} {
+      @content;
+    }
+  }
+}
+
+@mixin element($parent, $name) {
+  .#{$parent}__#{$name} {
+    @content;
+  }
+}
+
+@mixin element-next($parent, $name) {
+  + .#{$parent}__#{$name} {
+    @content;
+  }
+}
+
+@mixin modifier($parent, $name) {
+  $length_check: str-length('#{$parent}') + 1;
+  @if ($length_check == str-length('#{&}')) {
+    $subQuery: $parent;
+
+    @at-root &.#{$subQuery}--#{$name} {
+      @content;
+    }
+  } @else {
+    $length: str-length('.#{$parent} ');
+    $subQuery: str-slice('#{&}', $length + 1);
+    $query: '#{&}#{$subQuery}--#{$name}';
+
+    @at-root #{$query} {
+      @content;
+    }
+  }
+}
+
+@mixin add-modifier($parent, $name, $element:'') {
+  @if ($element == '') {
+    $query: '#{&}.#{$parent}--#{$name}';
+
+    @at-root #{$query} {
+      @content;
+    }
+  } @else {
+    $length: str-length('.#{$parent} ');
+    $subQuery: str-slice('#{$element}', $length+1);
+    $query: '#{&}#{$subQuery}--#{$name}';
+
+    @at-root #{$query} {
+      @content;
+    }
+  }
+}
+
+@mixin line-clamp(
+  $font-size,
+  $line-height,
+  $lines-to-show
+) {
+  display: block; // Fallback for non-webkit browsers
+  display: -webkit-box;
+  font-size: rem($font-size);
+  max-height: rem($line-height * $lines-to-show); // Fallback for non-webkit browsers
+  line-height: rem($line-height);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lines-to-show;
+}
+
+@mixin just-line-clamp($lines) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lines;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin few-elements ($parent, $names...) {
+  @each $item in $names {
+    .#{$parent}__#{$item} {
+      @content;
+    }
+  }
+}

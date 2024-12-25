@@ -1,0 +1,51 @@
+{% macro picture(data, class, noLazy) %}
+  {% if data.desktopBig or data.desktop or data.tablet %}
+    <picture class="picture {{ class|default('') }}">
+      {% if data.desktopBig %}
+        <source srcset="{{ data.desktopBig }}" media="(min-width: 1920px)">
+      {% endif %}
+      {% if data.desktop %}
+        <source srcset="{{ data.desktop }}" media="(min-width: 1280px)">
+      {% endif %}
+      {% if data.tablet %}
+        <source srcset="{{ data.tablet }}" media="(min-width: 768px)">
+      {% endif %}
+      {% if data.src %}
+        <img
+          {% if noLazy %}
+            src="{{ data.src }}"
+          {% else %}
+            loading="lazy"
+            src="{{ data.src }}"
+          {% endif %}
+          {% if data.alt %}
+            alt="{{ data.alt }}"
+          {% endif %}
+          {% if data.title %}
+            title="{{ data.title }}"
+          {% endif %}
+          {{ attributes }}
+        >
+      {% endif %}
+    </picture>
+  {% else %}
+    <img
+      {% if noLazy %}
+        class="picture {{ class|default('') }}"
+        src="{{ data.src }}"
+      {% else %}
+        loading="lazy"
+        class="picture {{ class|default('') }}"
+        src="{{ data.src }}"
+      {% endif %}
+      {% if data.alt %}
+        alt="{{ data.alt }}"
+      {% endif %}
+      {% if data.title %}
+        title="{{ data.title }}"
+      {% endif %}
+      {{ attributes }}
+    >
+  {% endif %}
+{% endmacro %}
+

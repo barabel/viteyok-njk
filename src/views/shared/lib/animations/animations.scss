@@ -1,0 +1,89 @@
+@use '~/src/assets/styles/lib/index.scss' as *;
+
+.animation-up-split {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s, visibility 1s;
+
+  &__line {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s, visibility 1s;
+
+    &--active {
+      animation-name: animationUpSplit;
+      animation-duration: 1s;
+
+      opacity: 1;
+      visibility: visible;
+    }
+
+    &--show {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &--active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.animation-fade-in-up {
+  opacity: 0;
+  transition: opacity 1s, visibility 1s;
+
+  &--active {
+    animation-name: animationfadeInUp;
+    animation-duration: 1s;
+
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.animation-fade-show {
+  opacity: 0;
+  transition: opacity 1s, visibility 1s;
+
+  &--active {
+    animation-name: animationFadeShow;
+    animation-duration: 1s;
+
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes animationfadeInUp {
+  from {
+    translate: 0 100px;
+  }
+
+  to {
+    translate: 0;
+  }
+}
+
+@keyframes animationUpSplit {
+  from {
+    translate: 0 100%;
+    clip-path: inset(0 0 100% 0);
+  }
+
+  to {
+    translate: 0;
+    clip-path: inset(0);
+  }
+}
+
+@keyframes animationFadeShow {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+
+  to {
+    clip-path: inset(0);
+  }
+}

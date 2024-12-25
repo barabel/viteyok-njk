@@ -1,0 +1,32 @@
+@use '~/src/assets/styles/lib/index.scss' as *;
+
+$parent: "popup-message";
+
+@include block($parent) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: rem(270);
+  padding: rem(24);
+  background-color: #212C24;
+
+  @include min-media('t') {
+    width: rem(333);
+  }
+
+  @include element($parent, 'title') {
+    margin-bottom: rem(15);
+    color: white;
+    text-align: center;
+  }
+
+  @include element($parent, 'description') {
+    margin-bottom: rem(20);
+    color: white;
+    text-align: center;
+  }
+
+  @include element($parent, 'close-button') {
+    min-width: 100%;
+  }
+}

@@ -1,0 +1,17 @@
+@use '~/src/assets/styles/lib/index.scss' as *;;
+
+$parent: "react-button";
+
+@include block($parent) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--button-height, rem(54));
+  padding: 0 rem(24);
+  border: 1px solid transparent;
+  border-radius: rem(40);
+  color: #E3DFD7;
+  background-color: #2D3C31;
+  text-align: center;
+  cursor: pointer;
+}

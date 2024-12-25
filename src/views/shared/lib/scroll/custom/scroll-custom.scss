@@ -1,0 +1,39 @@
+@use '~/node_modules/overlayscrollbars/styles/overlayscrollbars.min.css';
+
+.os-theme-dark {
+  --os-size: 2px;
+
+  --os-handle-border-radius: 0;
+  --os-handle-bg: var(--color-green-200);
+  --os-handle-bg-hover: var(--color-green-200);
+  --os-handle-bg-active: var(--color-green-200);
+  --os-handle-perpendicular-size: 2px;
+  --os-handle-perpendicular-size-hover: 2px;
+  --os-handle-perpendicular-size-active: 2px;
+
+  --os-track-bg: var(--color-green-200-40);
+  --os-track-bg-hover: var(--color-green-200-40);
+  --os-track-bg-active: var(--color-green-200-40);
+
+  --os-padding-axis: 0px;
+  --os-padding-perpendicular: 0px;
+}
+
+.os-theme-light {
+  --os-size: 2px;
+
+  --os-handle-border-radius: 0;
+  --os-handle-bg: var(--color-beige-200);
+  --os-handle-bg-hover: var(--color-beige-200);
+  --os-handle-bg-active: var(--color-beige-200);
+  --os-handle-perpendicular-size: 2px;
+  --os-handle-perpendicular-size-hover: 2px;
+  --os-handle-perpendicular-size-active: 2px;
+
+  --os-track-bg: var(--color-beige-100-16);
+  --os-track-bg-hover: var(--color-beige-100-16);
+  --os-track-bg-active: var(--color-beige-100-16);
+
+  --os-padding-axis: 0px;
+  --os-padding-perpendicular: 0px;
+}

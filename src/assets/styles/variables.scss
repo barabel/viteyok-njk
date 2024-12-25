@@ -1,0 +1,19 @@
+@use './lib/index.scss' as *;
+
+:root {
+  /** colors **/
+
+  /** fonts **/
+  --font: "manrope", system-ui, sans-serif;
+
+  --header-index: 20;
+  --container-padding: #{rem(16)};
+
+  @include min-media('t') {
+    --container-padding: #{rem(48)};
+  }
+
+  @include min-media('d') {
+    --container-padding: #{rem(64)};
+  }
+}
