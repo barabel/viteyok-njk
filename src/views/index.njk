@@ -5,7 +5,11 @@
 {% endblock %}
 
 {% block content %}
-  <button type="button" class="check-popup">
+  <button
+    type="button"
+    class="check-popup"
+    data-props="{{ hello|json_encode|e }}"
+  >
     нажми для открытия попапа
   </button>
 

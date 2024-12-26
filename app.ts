@@ -68,12 +68,59 @@ function getNjkFiles(directory: string) {
     });
 }
 
-const listHtml = getNjkFiles(path.join(process.cwd(), 'src', 'views'));
-
 const getGlobalData = () => {
   const fileData = fs.readFileSync(`./src/data/common.json`);
 
   return { ...JSON.parse(`${fileData}`) }
 }
 
-export { listHtml, getFileName, getGlobalData };
+/**
+ * Функция вовзращает список существующих страниц
+ */
+const listHtml = () => getNjkFiles(path.join(process.cwd(), 'src', 'views'));
+
+/**
+ * Копия json_encode твига (по сути JSON.stringify)
+ */
+const json_encode = (value) => {
+  if (value === undefined || value === null) {
+    return 'null';
+  }
+
+  if ((typeof value === 'object') && (Array.isArray(value))) {
+    const output = [];
+
+    value.forEach(v => {
+      output.push(json_encode(v));
+    });
+
+    return '[' + output.join(',') + ']';
+  }
+
+  if ((typeof value === 'object') && (value instanceof Date)) {
+    return '"' + value.toISOString() + '"';
+  }
+
+  if (typeof value === 'object') {
+    const keyset = value._keys || Object.keys(value);
+    const output = [];
+
+  keyset.forEach(key => {
+      output.push(JSON.stringify(key) + ':' + json_encode(value[key]));
+    });
+
+    return '{' + output.join(',') + '}';
+  }
+
+  return JSON.stringify(value);
+}
+
+/**
+ * Фильтры для nunjucks
+ */
+const njkFilters = {
+  listHtml,
+  json_encode,
+}
+
+export { njkFilters, getFileName, getGlobalData };
