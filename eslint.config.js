@@ -28,6 +28,7 @@ export default [
       "no-unused-expressions": "off",
       "@typescript-eslint/no-unused-expressions": "off",
       "no-irregular-whitespace": "off",
+      "@typescript-eslint/consistent-type-imports": "error",
     },
   },
   {
