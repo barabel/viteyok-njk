@@ -33,6 +33,7 @@ export default defineConfig(({ mode }) => {
     publicDir: 'static',
     server: {
       port: 3000,
+      host: true,
       proxy: {
         '/api': `http://localhost:${env.VITE_PORT ?? 3065}`,
       },
