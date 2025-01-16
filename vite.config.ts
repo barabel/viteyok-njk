@@ -3,7 +3,7 @@ import vituum from 'vituum';
 import njk from '@vituum/vite-plugin-nunjucks';
 import path from 'node:path';
 import IconSpritePlugin from './plugins/vite-plugin-icon-sprite';
-import { getFileName, getGlobalData, njkFilters } from './app';
+import { getFileName, njkFilters } from './app';
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd());
@@ -22,7 +22,6 @@ export default defineConfig(({ mode }) => {
         root: '.',
         reload: true,
         useSeparateData: true,
-        globals: getGlobalData(),
         options: {
           autoescape: false,
         },

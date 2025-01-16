@@ -68,12 +68,6 @@ function getNjkFiles(directory: string) {
     });
 }
 
-const getGlobalData = () => {
-  const fileData = fs.readFileSync(`./src/data/common.json`);
-
-  return { ...JSON.parse(`${fileData}`) }
-}
-
 /**
  * Функция вовзращает список существующих страниц
  */
@@ -123,4 +117,4 @@ const njkFilters = {
   json_encode,
 }
 
-export { njkFilters, getFileName, getGlobalData };
+export { njkFilters, getFileName };
